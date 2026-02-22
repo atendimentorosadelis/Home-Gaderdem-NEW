@@ -1,0 +1,31 @@
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/lib/supabase';
+
+export interface CronJobExecution {
+  runid: number;
+  job_pid: number;
+  status: string;
+  return_message: string | null;
+  start_time: string;
+  end_time: string | null;
+  duration_ms: number | null;
+}
+
+export function useCronJobHistory() {
+  return useQuery({
+    queryKey: ['cron-job-history'],
+    queryFn: async (): Promise<CronJobExecution[]> => {
+      // Query cron job execution history
+      const { data, error } = await supabase.rpc('get_cron_job_history' as any);
+      
+      if (error) {
+        console.error('Error fetching cron history:', error);
+        // Return empty array if RPC doesn't exist yet
+        return [];
+      }
+
+      return (data as CronJobExecution[]) || [];
+    },
+    refetchInterval: 30000, // Refresh every 30 seconds
+  });
+}

@@ -1,0 +1,7 @@
+# ads.txt - Configurado via Painel Admin
+# Para atualizar este arquivo, acesse: /admin/settings > SEO > Google AdSense
+# 
+# Após configurar seu Publisher ID no painel admin, atualize este arquivo com:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# 
+# Substitua pub-XXXXXXXXXXXXXXXX pelo seu Publisher ID real do Google AdSense
